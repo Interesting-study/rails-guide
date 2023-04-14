@@ -1,34 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Title</title>
-</head>
-<body>
+<p style="color: green"><%= notice %></p>
 
-<h1>Listing articles</h1>
+<h1>Articles</h1>
 
-<table>
-  <tr>
-    <th>Title</th>
-    <th>Text</th>
-    <th colspan="2"></th>
-  </tr>
-
+<div id="articles">
   <% @articles.each do |article| %>
-    <tr>
-      <td><%= article.title %></td>
-      <td><%= article.text %></td>
-      <td><%= link_to 'Show', article_path(article) %></td>
-      <td><%= link_to 'Edit', edit_article_path(article) %></td>
-      <td><%= link_to 'Destroy', article_path(article),
-                      method: :delete,
-                      data: { confirm: 'Are you sure?' } %></td>
-    </tr>
+    <%= render article %>
+    <p>
+      <%= link_to "Show this article", article %>
+    </p>
   <% end %>
-  <tr>
-    <td><%= link_to "Write", new_article_path %></td>
-  </tr>
-</table>
-</body>
-</html>
+</div>
+
+<%= link_to "New article", new_article_path %>
